@@ -29,5 +29,7 @@ Após ativar o ambiente, é realizada a instalação das bibliotecas e a execuç
 
 1 - No diretório do programa, execute o comando: pip install -r requirements.txt
 
-2 - Após instaladas as bibliotecas, basta executar o arquivo "main.py" e o programa estará funcionando!!! Uma maneira de executar é no diretório
+2 - Após instalados, atualize o arquivo ".env" adicionando a sua chave de API do YouTubeAPI
+
+3 - Após instaladas as bibliotecas, basta executar o arquivo "main.py" e o programa estará funcionando!!! Uma maneira de executar é no diretório
     executar o comando: python3 main.py

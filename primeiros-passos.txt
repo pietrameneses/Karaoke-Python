@@ -1,0 +1,33 @@
+-----------------------------------------------------------------IMPORTANTE-------------------------------------------------------------------------
+
+O programa atualmente está funcionando em sistemas baseados em Linux (utilizo o Ubuntu). Ainda não foi testado no Windows, mas futuramente pretendo 
+realizar os testes para que funcione em ambas plataformas.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Para o funcionamento, é necessária a instalação de algumas bibliotecas e módulos, aqui está um passo-a-passo de instalação e execução:
+
+1 - Atualize os pacotes do sistema com o comando: sudo apt update && sudo apt upgrade
+
+2 - Instale o TKInter na máquina através do comando: sudo apt install python3-tk
+
+3 - Instale o FFMpeg com o comando: sudo apt install ffmpeg
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Agora, é recomendável criar um ambiente virtual para a instalação das bibliotecas:
+
+1 - Instale o venv através do comando: sudo apt install python3.10-venv
+
+2 - Depois disso, no diretório raiz do programa, abra o terminar e utilize o seguinte comando para criar o ambiente virtual: python3 -m venv venv
+
+3 - Para ativar o ambiente, no diretório use o comando: source venv/bin/activate
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Após ativar o ambiente, é realizada a instalação das bibliotecas e a execução do programa. Para isso:
+
+1 - No diretório do programa, execute o comando: pip install -r requirements.txt
+
+2 - Após instaladas as bibliotecas, basta executar o arquivo "main.py" e o programa estará funcionando!!! Uma maneira de executar é no diretório
+    executar o comando: python3 main.py

@@ -39,7 +39,7 @@ class Video_Player:
         
         self.create_widgets()
 
-        os.system("pactl load-module module-loopback latency_msec=1") # o retorno de áudio é ativado
+        os.system("pactl load-module module-loopback latency_msec=1 source=1 sink=1") # o retorno de áudio é ativado
 
         self.play()
 
@@ -107,7 +107,7 @@ class Video_Player:
         media = self.instance.media_new('video_karaoke.mp4')
         self.player.set_media(media)
         self.player.set_xwindow(self.media_canvas.winfo_id())
-        self.player.audio_set_volume(50)
+        self.player.audio_set_volume(100)
         self.player.play()
 
         #mixer.music.play()

@@ -26,7 +26,7 @@ class Karaoke:
         self.TAXA = 44100
         self.p = None
         self.fluxo = None
-        self.limite = 8 # Tolerância de erro em Hertz
+        self.limite = 6 # Tolerância de erro em Hertz
         self.rodando = False
         self.lista_nota = [] # Lista com os erros e acertos das notas capturadas
         self.stopped = threading.Event()

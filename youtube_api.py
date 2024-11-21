@@ -349,6 +349,7 @@ class Video:
             self.funcao1(self.arg1)
             self.funcao2()
             self.first_search = True
+            os.system("pactl load-module module-loopback latency_msec=1")
             self.destroy_widgets()
             self.create_widgets()
 

@@ -1,10 +1,13 @@
 import vlc
 import tkinter as tk
 import os
+import threading
+from karaoke import Karaoke
+from escalas import Tom
 from pygame import mixer
 
 class Video_Player:
-    def __init__(self, mestre, funcao, arg1, arg2, metodo):
+    def __init__(self, mestre, funcao, arg1, arg2, tom):
         
         # Função construtora do objeto
         # Entrada:
@@ -18,9 +21,10 @@ class Video_Player:
         self.funcao = funcao
         self.arg1 = arg1
         self.arg2 = arg2
-        self.metodo = metodo
+        self.tom = tom
         self.isPlayed = True
         self.isNotPlayed = False
+        #os.system("pactl load-module module-loopback latency_msec=1") # o retorno de áudio é ativado
         self.video_audio_instance()
 
     # -----------------------------------------------------------------------------------------------------------------------
@@ -40,6 +44,10 @@ class Video_Player:
         self.create_widgets()
 
         os.system("pactl load-module module-loopback latency_msec=1 source=1 sink=1") # o retorno de áudio é ativado
+
+        self.afinador = Karaoke(self.arg1, self.tom, self.funcao, self.arg2, self.botao)
+        self.afinador.ligar_desligar()
+
 
         self.play()
 
@@ -96,6 +104,13 @@ class Video_Player:
 
         self.menu_button.grid(row=1, column=1, padx=100)
 
+        self.botao = tk.Button(
+            self.control_buttons_frame,
+            bg='yellow',
+            width=3
+    )
+        self.botao.grid(row=1, column=2)
+
     # -----------------------------------------------------------------------------------------------------------------------
 
     def play(self):
@@ -149,7 +164,7 @@ class Video_Player:
         self.media_canvas.destroy()
         self.control_buttons_frame.destroy()
         self.funcao(self.arg1)
-        self.metodo()
+        self.afinador.ligar_desligar()
 
     # -----------------------------------------------------------------------------------------------------------------------        
 

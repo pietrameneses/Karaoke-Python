@@ -6,7 +6,7 @@ from queue import Queue, Full
 from array import array
 
 class Karaoke:
-    def __init__(self, mestre, escala, funcao1, arg1):
+    def __init__(self, mestre, escala, funcao1, arg1, botao):
 
         # Função construtora do objeto
         # Entrada:
@@ -21,12 +21,14 @@ class Karaoke:
         self.escala = escala
         self.funcao1 = funcao1
         self.arg1 = arg1
+        self.botao = botao
+
 
         self.TAMANHO_BLOCO = 4096
         self.TAXA = 44100
         self.p = None
         self.fluxo = None
-        self.limite = 6 # Tolerância de erro em Hertz
+        self.limite = 8 # Tolerância de erro em Hertz
         self.rodando = False
         self.lista_nota = [] # Lista com os erros e acertos das notas capturadas
         self.stopped = threading.Event()
@@ -165,9 +167,10 @@ class Karaoke:
                 self.threshold = True
             else:
                 self.threshold = False
+                self.botao.configure(bg='yellow')
 
             if self.threshold:
-                #self.lista_nota.append(freq_em_hertz)
+                self.lista_nota.append(freq_em_hertz)
                 return freq_em_hertz
 
         except Full:
@@ -189,11 +192,13 @@ class Karaoke:
             for nota in self.escala:
                 if abs(freq - nota) <= self.limite: #frequencia dentro do limite
                     pontuacao = 1
+                    self.botao.configure(bg='green')
                     break
                 elif freq < 80: #Threshold do microfone
                     pontuacao = 5
                 else:
                     pontuacao = 0
+                    self.botao.configure(bg='red')
 
             self.lista_nota.append(pontuacao)
             self.mestre.after(10, self.coletar_nota)

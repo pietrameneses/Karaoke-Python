@@ -1,4 +1,4 @@
-from pymusickit.key_finder import KeyFinder
+from keyfinder import KeyFinder
 
 def finder(path):
 

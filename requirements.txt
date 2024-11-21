@@ -1,8 +1,6 @@
 google_api_python_client==2.147.0
 numpy==1.23.5
-PyAudio==0.2.14
 pygame==2.6.0
-pymusickit==0.1.1
 python-dotenv==1.0.1
 python_vlc==3.0.20123
 yt_dlp==2024.10.22

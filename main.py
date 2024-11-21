@@ -24,6 +24,11 @@ if __name__ == "__main__":
     interface.geometry("{0}x{1}".format(interface.winfo_screenwidth(), interface.winfo_screenheight()))
     interface.configure(background='#000080')
     interface.grid_columnconfigure(0, weight=1)
+    status = tk.Button(
+        interface,
+        bg='yellow',
+        width=3
+    )
 
     # Instanciação das telas
     Home = tk.Frame(interface)
@@ -38,9 +43,9 @@ if __name__ == "__main__":
 
         key = finder('audio_karaoke.mp3')
         tom = Tom(key)
-        afinador = Karaoke(Karaoke_display, tom.get_frequencias(), raise_frame, Home)
-        afinador.ligar_desligar()
-        media_player = Video_Player(Player, raise_frame, Karaoke_display, Home, afinador.ligar_desligar)
+        #afinador = Karaoke(Karaoke_display, tom.get_frequencias(), raise_frame, Home)
+        #afinador.ligar_desligar()
+        media_player = Video_Player(Player, raise_frame, Karaoke_display, Home, tom.get_frequencias())
 
 
     Youtube_Search = Video(Home, raise_frame, Player, instanciar_karaoke)
